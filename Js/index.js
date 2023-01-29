@@ -87,6 +87,35 @@ const car = new Car()
     // const set3 = /^\d\S+@\S+\.?\S+$/.test("1738acer@ace.com2023")
     // console.log(set3)
 
+
+    //Creating Objects
+    // const Person = {
+    //     name : "Terry",
+    //     age : "26"
+    // }
+
+    // const cars  = {
+    //     Brand : "Mercedez Benz",
+    //     model : "G-wagon"
+    // }
+
+    // const Lang = {
+    //     frontEnd : "React",
+    //     backEnd : "nodeJs"
+    // }
+
+    // console.log(Person)
+    // console.log(cars)
+    // console.log(Lang)
+
+    //Creating Arrays
+    const numbers = [10, 20, 30, 40, 50]
+
+    //Using the Map Function
+    const numMultiply = numbers.map((item) => item * 2)
+
+    console.log(numMultiply)
+
     
 
 

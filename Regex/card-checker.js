@@ -2,7 +2,6 @@
 
 //Function to check the cards
 function cardChecker(num){
-    //Sample Card number
 
 //Regex Patterns for Different cards
 
