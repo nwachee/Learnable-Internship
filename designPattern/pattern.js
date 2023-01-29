@@ -1,4 +1,28 @@
- //Creating a Telephone Package
+//Creating Observer Pattern 
+class observer{
+  constructor(name, phone){
+   this.name = name,
+   this.phone = phone
+  }
+
+  addObserver(name, phone) {
+   this.name = name,
+   this.phone = phone
+  }
+
+  removeObserver(name, phone){
+   this.name = name,
+   this.phone = phone
+  }
+
+  update(name, phone){
+   this.name = name,
+   this.phone = phone
+  }
+}
+
+
+//Creating a Telephone Package
  class Telephone {
       constructor(name, number) {
         this.name = name,
@@ -21,11 +45,20 @@
     }
 
     //method to dial telephone numbers
-    dialPhoneNumber(){
-        console.log("**** Dialing ****")
+    dialPhoneNumber(name, phone){
+
+      if(this.name){
+        observer.addObserver(name, phone)
+        observer.update(name, phone)
+
+        console.log(observer.update(phone))
+        console.log(`Now Dialing ${observer.update(phone)}`)
+      } else {
+        console.log("Number not found")
+      }
+        
     }
 
-    addObserver
 
     //notify observers
     notify(context){
@@ -36,33 +69,11 @@
 
 }
 
-    //Creating Observer Pattern 
-    class observer{
-       constructor(name, phone){
-        this.name = name,
-        this.phone = phone
-       }
-
-       addObserver(name, phone) {
-        this.name = name,
-        this.phone = phone
-       }
-
-       removeObserver(name, phone){
-        this.name = name,
-        this.phone = phone
-       }
-
-       update(name, phone){
-        this.name = name,
-        this.phone = phone
-       }
-    }
-
+    
 
     //creating an object of the Telephone Class
-    let nokia = new Telephone()
-    nokia.addPhoneNumber('Zangetsu', '0924849202840')
-    nokia.removePhoneNumber('Zangetsu', '0924849202840')
-    nokia.dialPhoneNumber()
+    // let nokia = new Telephone()
+    // nokia.addPhoneNumber('Zangetsu', '0924849202840')
+    // nokia.removePhoneNumber('Zangetsu', '0924849202840')
+    // nokia.dialPhoneNumber()
     
