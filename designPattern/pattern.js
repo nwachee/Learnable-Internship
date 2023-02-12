@@ -69,11 +69,5 @@ class observer{
 
 }
 
-    
 
-    //creating an object of the Telephone Class
-    // let nokia = new Telephone()
-    // nokia.addPhoneNumber('Zangetsu', '0924849202840')
-    // nokia.removePhoneNumber('Zangetsu', '0924849202840')
-    // nokia.dialPhoneNumber()
     
