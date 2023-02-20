@@ -1,28 +1,31 @@
-const express = require("express")
-const router = express.Router()
+const router = require("express").Router()
 
 const {
-    getAllRooms,
-    getRoomById,
-    addRoom,
-    editRoomById,
-    deleteRoomById
+    createRoom,
+    fetchOneRoom,
+    updateRoom,
+    deleteRoom,
+    fetchAllRoom
 } = require("../controller/room")
 
 
 //Creating routes for the API
 
 //GET
-router.route('/').get(getAllRooms)
-router.route('/room/:id').get(getRoomById)
-
+router.get('/', fetchAllRoom)
+// router.get('/', (req, res) => {
+// 	res.status(200).send({ message: "LIST OF ROOMS AVAILABLE", success : true})
+// })
+router.get('/:id', fetchOneRoom)
 
 //POST
-router.route('/room').post(addRoom)
+router.post('/', createRoom)
 
 //PATCH
-router.route('/room/:id').patch(editRoomById)
+router.patch('/:id', updateRoom)
 
 //DELETE
-router.route('/room/:id').delete(deleteRoomById)
+router.delete('/id', deleteRoom)
+
+module.exports = router
 

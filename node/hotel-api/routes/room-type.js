@@ -11,14 +11,14 @@ const {
 
 
 //GET
-router.route('/').get(getAllRooms)
-router.route('/room-type/:id').get(getRoomById)
+router.get('/', getAllRooms)
+router.get('/room-type/:id', getRoomById)
 
 //POST
-router.route('/room-type').post(addRoom)
+router.post('/room-type', addRoom)
 
 //PATCH
-router.route('/room-type/:id').patch(editRoomById)
+router.patch('/room-type/:id', editRoomById)
 
 //DELETE
-router.route('/room-type/:id').delete(deleteRoomById)
+router.delete('/room-type/:id', deleteRoomById)
