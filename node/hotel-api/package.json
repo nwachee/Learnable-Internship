@@ -2,10 +2,12 @@
   "name": "hotel-api",
   "version": "1.0.0",
   "description": "Hotel Management API",
-  "main": "app.js",
+  "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev app.js"
+    "start": "node .dist/src/app.ts",
+    "tsc" : "tsc",
+    "postinstall" : "npm run tsc"
   },
   "type": "module",
   "author": "nwachee",
