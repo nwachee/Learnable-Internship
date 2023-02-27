@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
+import { connect } from "mongoose";
 
 const connectDB = (url) => {
-    return mongoose.connect(url, { 
+    return connect(url, { 
          useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
@@ -10,4 +10,4 @@ const connectDB = (url) => {
 }
 
 // create a model from schema and export it
-module.exports = connectDB
+export default connectDB

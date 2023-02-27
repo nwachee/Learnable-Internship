@@ -1,13 +1,7 @@
-const express = require("express")
-const router = express.Router()
+import { Router } from "express"
+const router = Router()
 
-const {
-    getAllRooms,
-    getRoomById,
-    addRoom,
-    editRoomById,
-    deleteRoomById
-} = require("../controller/room")
+import { getAllRooms, getRoomById, addRoom, editRoomById, deleteRoomById } from "../controller/room"
 
 
 //GET

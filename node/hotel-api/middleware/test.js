@@ -1,6 +1,6 @@
 function test(req, res, next){
-    console.log("Test middleware Active")
+    console.log("Still trying to Figure how this works")
     next()
 }
 
-module.exports = test;
+export default test;

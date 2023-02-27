@@ -1,24 +1,15 @@
-const express = require("express")
-// const rateLimit = require('express-rate-limit');
-const dotenv = require("dotenv")
-dotenv.config({ path: './config.env' })
-const connectDB = require('./DB/connect')
-const testMiddleware = require('./middleware/test')
-const roomRoute = require('./routes/room')
+import express, { json } from "express"
+import { config } from "dotenv"
+config({ path: './config.env' })
+import connectDB from './DB/connect'
+import testMiddleware from './middleware/test'
+import roomRoute from './routes/room'
 // const roomTypeRoute = require('./routes/room-type')
-const loginRoute = require('./routes/login')
+import loginRoute from './routes/login'
 const app = express()
 
-//Limit requests from same ip
-// const limiter = rateLimit({
-// 	max: 100,
-// 	windowMs: 60 * 60 * 1000,
-// 	message: 'Too many requests from this ip, please try again in an hour',
-// });
-// app.use('/api', limiter);
-
 // for parsing application/json
-app.use(express.json())
+app.use(json())
 
 app.set('view engine', 'ejs')
 

@@ -1,6 +1,7 @@
-const express = require("express")
-const { loginPage, registerPage} = require("../controller/login")
-const router = express.Router()
+import { Router } from "express"
+import default from "../controller/login"
+const { loginPage, registerPage } = default
+const router = Router()
 
 // Login Router
 router.get("/login", loginPage)
@@ -9,4 +10,4 @@ router.get("/login", loginPage)
 router.get("/register", registerPage)
 
 //Export the Router
-module.exports = router
+export default router

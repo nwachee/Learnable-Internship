@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
+import { Schema, model } from "mongoose"
 
 // instantiate a mongoose schema
-const RoomTypeSchema = new mongoose.Schema({
+const RoomTypeSchema = new Schema({
     roomName : {
         type : String,
         required: [true, 'Must have a name'],
@@ -15,4 +15,4 @@ const RoomTypeSchema = new mongoose.Schema({
 })
 
 // create a model from schema and export it
-module.exports = mongoose.model('roomType', RoomTypeSchema)
+export default model('roomType', RoomTypeSchema)

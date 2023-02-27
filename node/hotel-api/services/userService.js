@@ -1,4 +1,4 @@
-const userModel = require('../models/user')
+import userModel from '../models/user'
 
 class UserService {
     //Create a User
@@ -29,4 +29,4 @@ class UserService {
 }
 
 //export user 
-module.exports = new userModel()
+export default new UserService()

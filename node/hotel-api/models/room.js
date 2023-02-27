@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
+import { Schema, model } from "mongoose"
 
 // instantiate a mongoose schema
-const RoomSchema = new mongoose.Schema({
+const RoomSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -14,13 +14,13 @@ const RoomSchema = new mongoose.Schema({
         trim: true
     },
 
-    // date: {
-    //     type: String,
-    //     default: Date.now
-    // }
+    date: {
+        type: String,
+        default: Date.now
+    }
 
 })
 
 // create a model from schema and export it
-const roomModel = mongoose.model('Room', RoomSchema)
-module.exports = roomModel
+const roomModel = model('Room', RoomSchema)
+export default roomModel

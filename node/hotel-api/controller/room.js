@@ -1,4 +1,4 @@
-const roomService = require('../services/roomService')
+import { fetchOne, create, update, delete, fetch } from '../services/roomService'
 
 //Create a Class to query the database
 class RoomController {
@@ -8,7 +8,7 @@ class RoomController {
         console.log(reqBody)
 
          //check for existing room
-        const checkRoom = await roomService.fetchOne({ 
+        const checkRoom = await fetchOne({ 
             name: reqBody.name
         })
 
@@ -18,7 +18,7 @@ class RoomController {
         })
 
         //else create a room
-        const newRoom = await roomService.create(reqBody)
+        const newRoom = await create(reqBody)
 
         res.status(201).json({
             success: true,
@@ -32,7 +32,7 @@ class RoomController {
         const roomId = req.params
         const updateData = req.body
         //check if room exits before updating
-        const checkRoom = await roomService.fetchOne({
+        const checkRoom = await fetchOne({
             _id : roomId
         })
 
@@ -43,7 +43,7 @@ class RoomController {
 
         //make the unique key consistent
         if(updateData.name){
-            const checkRoomUpdate = await roomService.fetchOne({
+            const checkRoomUpdate = await fetchOne({
                 roomName: updateData.name.toLowerCase()
             })
 
@@ -57,7 +57,7 @@ class RoomController {
         }
 
         //update room
-        const updatedData = await roomService.update(roomId, updateData)
+        const updatedData = await update(roomId, updateData)
         res.status(200).json({
             success: true,
             message: 'Room updated successfully',
@@ -69,7 +69,7 @@ class RoomController {
     async deleteRoom (req, res){
         const roomId = req.params
         //check if room exits before updating
-        const checkRoom = await roomService.fetchOne({
+        const checkRoom = await fetchOne({
             _id: roomId
         })
 
@@ -79,7 +79,7 @@ class RoomController {
         })
 
         //delete room
-        const deletedRoom = await roomService.delete(roomId)
+        const deletedRoom = await delete(roomId)
 
         res.status(200).json({
             success: true,
@@ -93,7 +93,7 @@ class RoomController {
     async fetchOneRoom(req, res){
         const roomId = req.params.id
         //check if room exits before updating
-        const checkRoom = await roomService.fetchOne({
+        const checkRoom = await fetchOne({
             _id: roomId
         })
 
@@ -111,7 +111,7 @@ class RoomController {
 
     //Fetch all Rooms
     async fetchAllRoom(req, res){
-        const fetchedBooks = await roomService.fetch({ })
+        const fetchedBooks = await fetch({ })
 
         res.status(200).json({
             success: true,
@@ -122,4 +122,4 @@ class RoomController {
 }
 
 //export the module
-module.exports = new RoomController()
+export default new RoomController()
