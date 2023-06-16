@@ -1,32 +1,37 @@
-import userModel from '../models/user'
+import userModel from '../models/user.model'
+import { HttpException } from '../exceptions/HttpException.js';
 
-class UserService {
     //Create a User
-    async create(userData){
+    export const Create = async (userData) => {
         return await userModel.create(userData)
     }
-
     //Edit a user
-    async update(id, userUpdate){
+    export const Update = async (id, userUpdate) => {
         return await userModel.findByIdAndUpdate(id, userUpdate, {new : true})
     }
-
     //Delete a user
-    async delete(id){
+    export const Delete = async(id) => {
         return await userModel.findByIdAndDelete(id)
     }
-
-
     //Get a single user
-    async fetchOne(filter){
+    export const fetchOne = async(filter) => {
         return await userModel.findOne(filter)
     }
-
     //Get All users
-    async fetch(filter){
+    export const fetchAll = async (filter) => {
         return await userModel.find(filter)
     }
-}
 
-//export user 
-export default new UserService()
+    //login Student
+export const Login = async (input) => {
+    const { email, password } = input;
+  
+    const user = await userModel.findOne({ email });
+    if (!user) throw new HttpException(404, `user with email ${email} not found`);
+  
+    // if (!user.matchPassword(password)) {
+    //   throw new HttpException(409, 'Invalid Password');
+    // }
+    return user;
+  };
+
