@@ -3,10 +3,10 @@ import { login, register } from '../controller/user.controller'
 const router = Router()
 
 // Login Router
-router.get("/login", login)
+router.post("/login", login)
 
 //Register Router
-router.get("/register", register)
+router.post("/register", register)
 
 //Export the Router
 export default router

@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.validateUser = void 0;
 const Joi = require("joi");
-const validateUser = (req, res, next, isOptional = false) => {
+export const validateUser = (req, res, next, isOptional = false) => {
     const schema = Joi.object({
         fullName: isOptional ? Joi.string().min(3).max(100).trim() : Joi.string().required().min(3).max(100).trim(),
         email: isOptional ? Joi.string().email().lowercase().trim() : Joi.string().email().required().lowercase().trim(),
@@ -24,4 +21,3 @@ const validateUser = (req, res, next, isOptional = false) => {
     }
     next();
 };
-exports.validateUser = validateUser;

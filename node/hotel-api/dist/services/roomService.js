@@ -1,32 +1,30 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchAll = exports.fetchOne = exports.Delete = exports.Update = exports.Create = void 0;
-const room_model_1 = __importDefault(require("../models/room.model"));
+import roomModel from "../models/room.model";
 //Create a Room
-const Create = async (roomData) => {
-    return await room_model_1.default.create(roomData);
-};
-exports.Create = Create;
+export const Create = (roomData) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield roomModel.create(roomData);
+});
 //Edit a Room
-const Update = async (id, bookUpdate) => {
-    return await room_model_1.default.findByIdAndUpdate(id, bookUpdate, { new: true });
-};
-exports.Update = Update;
+export const Update = (id, bookUpdate) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield roomModel.findByIdAndUpdate(id, bookUpdate, { new: true });
+});
 //Delete a Room
-const Delete = async (id) => {
-    return await room_model_1.default.findByIdAndDelete(id);
-};
-exports.Delete = Delete;
+export const Delete = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield roomModel.findByIdAndDelete(id);
+});
 //Get a single Room
-const fetchOne = async (filter) => {
-    return await room_model_1.default.findOne(filter);
-};
-exports.fetchOne = fetchOne;
+export const fetchOne = (filter) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield roomModel.findOne(filter);
+});
 //Get All Rooms
-const fetchAll = async (filter) => {
-    return await room_model_1.default.find(filter);
-};
-exports.fetchAll = fetchAll;
+export const fetchAll = (filter) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield roomModel.find(filter);
+});

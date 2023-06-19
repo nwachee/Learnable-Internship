@@ -1,45 +1,30 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Login = exports.fetchAll = exports.fetchOne = exports.Delete = exports.Update = exports.Create = void 0;
-const user_model_1 = __importDefault(require("../models/user.model"));
-const HttpException_js_1 = require("../exceptions/HttpException.js");
+import userModel from '../models/user.model';
 //Create a User
-const Create = async (userData) => {
-    return await user_model_1.default.create(userData);
-};
-exports.Create = Create;
+export const Create = (userData) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield userModel.create(userData);
+});
 //Edit a user
-const Update = async (id, userUpdate) => {
-    return await user_model_1.default.findByIdAndUpdate(id, userUpdate, { new: true });
-};
-exports.Update = Update;
+export const Update = (id, userUpdate) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield userModel.findByIdAndUpdate(id, userUpdate, { new: true });
+});
 //Delete a user
-const Delete = async (id) => {
-    return await user_model_1.default.findByIdAndDelete(id);
-};
-exports.Delete = Delete;
+export const Delete = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield userModel.findByIdAndDelete(id);
+});
 //Get a single user
-const fetchOne = async (filter) => {
-    return await user_model_1.default.findOne(filter);
-};
-exports.fetchOne = fetchOne;
+export const fetchOne = (filter) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield userModel.findOne(filter);
+});
 //Get All users
-const fetchAll = async (filter) => {
-    return await user_model_1.default.find(filter);
-};
-exports.fetchAll = fetchAll;
-//login Student
-const Login = async (input) => {
-    const { email, password } = input;
-    const user = await user_model_1.default.findOne({ email });
-    if (!user)
-        throw new HttpException_js_1.HttpException(404, `user with email ${email} not found`);
-    // if (!user.matchPassword(password)) {
-    //   throw new HttpException(409, 'Invalid Password');
-    // }
-    return user;
-};
-exports.Login = Login;
+export const fetchAll = (filter) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield userModel.find(filter);
+});

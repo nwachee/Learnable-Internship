@@ -8,7 +8,7 @@ import indexRoute from './routes/index.route'
 
 const app = express()
 //creating a port for the server
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 5000;
 
 app.use(logger('dev'));
 app.use(

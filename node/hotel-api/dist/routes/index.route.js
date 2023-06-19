@@ -1,12 +1,10 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_route_1 = __importDefault(require("./user.route"));
-const room_route_1 = __importDefault(require("./room.route"));
-const router = (0, express_1.default)();
-router.use('/user', user_route_1.default);
-router.use('/room', room_route_1.default);
-exports.default = router;
+import Router from 'express';
+import userRoute from './user.route';
+import roomRoute from './room.route';
+const router = Router();
+router.use('/user', userRoute);
+router.use('/room', roomRoute);
+router.get("/healthcheck", (req, res) => {
+    res.status(200).send({ message: "Server dey Up!!! .... Welcome to VicHotels ....", success: true });
+});
+export default router;
