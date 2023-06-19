@@ -3,13 +3,11 @@ const router = Router()
 
 import { createRoom, fetchOneRoom, updateRoom, deleteRoom, fetchAllRoom } from "../controller/room.controller"
 
-
-//Creating routes for the API
-
 //GET
 router.get('/', fetchAllRoom)
 
-router.get('/room/:id', fetchOneRoom)
+//GET
+router.get('/:id', fetchOneRoom)
 
 //POST
 router.post('/', createRoom)

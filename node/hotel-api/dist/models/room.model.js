@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
+import { Schema, model } from "mongoose";
 // instantiate a mongoose schema
-const RoomSchema = new mongoose_1.Schema({
+const RoomSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -17,5 +15,5 @@ const RoomSchema = new mongoose_1.Schema({
     timestamps: true,
 });
 // create a model from schema and export it
-const roomModel = (0, mongoose_1.model)('Room', RoomSchema);
-exports.default = roomModel;
+const roomModel = model('Room', RoomSchema);
+export default roomModel;

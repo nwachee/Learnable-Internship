@@ -1,5 +1,4 @@
 import userModel from '../models/user.model'
-import { HttpException } from '../exceptions/HttpException.js';
 
     //Create a User
     export const Create = async (userData) => {
@@ -22,16 +21,4 @@ import { HttpException } from '../exceptions/HttpException.js';
         return await userModel.find(filter)
     }
 
-    //login Student
-export const Login = async (input) => {
-    const { email, password } = input;
-  
-    const user = await userModel.findOne({ email });
-    if (!user) throw new HttpException(404, `user with email ${email} not found`);
-  
-    // if (!user.matchPassword(password)) {
-    //   throw new HttpException(409, 'Invalid Password');
-    // }
-    return user;
-  };
 
