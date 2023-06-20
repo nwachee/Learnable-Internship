@@ -8,7 +8,6 @@ Used to Perform CRUD Functions on the Hotel Management System
 - dotenv
 - Joi
 - Bcrypt
-- passport
 - cors
 - morgan
 
