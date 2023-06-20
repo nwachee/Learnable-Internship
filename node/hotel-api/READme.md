@@ -1,22 +1,31 @@
 # Hotel-API
 Used to Perform CRUD Functions on the Hotel Management System
 
-### How to run
-- Clone the repo and open the folder using vscode or any other ide of choice
-- Run npm install in your terminal to install packages in package.json
-- Create a config.env file and fill in values for the following variables:
-MONGO_URI
+## Tech Stack
+- Node js
+- Express
+- Mongoose
+- dotenv
+- Joi
+- Bcrypt
+- cors
+- morgan
+
+## Installation
+- Clone the [repo](https://github.com/nwachee/Learnable-Internship.git) 
+- Run `npm install ` in your terminal to install packages in package.json
+- Create a `.env file` and fill in values for the following variables: - `MONGO_URI`
+- Finally run `npm start` in your terminal
+
 
 ### Endpoints
-The following endpoints are available on this server:
-fetch a single room - `api/v1/room/:id` 
-Fetch all rooms - `api/v1/room` 
-create a room - `api/v1/`
-update a room - `api/v1/:id`
-delete a room - `api/v1/id`
-create a room - `api/v1/`
-login a user - `api/v1/user/login`
-register a user - `api/v1/user/register`
+fetch a single room - `[GET]` : `api/v1/room/:id` 
+Fetch all rooms - `[GET]` : `api/v1/room` 
+update a room - `[PATCH]` : `api/v1/room/:id`
+delete a room - `[DELETE]` : `api/v1/room/:id`
+create a room - `[POST]` : `api/v1/room`
+login a user - `[POST]` : `api/v1/user/login`
+register a user - `[POST]` : `api/v1/user/register`
 
 
 ### Resources

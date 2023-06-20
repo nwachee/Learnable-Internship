@@ -1,13 +1,15 @@
-import { connect } from "mongoose";
+import mongoose from "mongoose";
 
-const connectDB = (url) => {
-    return connect(url, { 
-         useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(() => {
-        console.log('Connected!!!');
-      });
-}
+const connectDb = async () => {
+    const MONGO_URI = process.env.MONGO_URI;
+    try {
+      mongoose.set('strictQuery', false);
+      mongoose.connect(MONGO_URI);
+      console.log('Database connected');
+    } catch (error) {
+      process.exit(1);
+    }
+  };
 
 // create a model from schema and export it
-export default connectDB
+export default connectDb

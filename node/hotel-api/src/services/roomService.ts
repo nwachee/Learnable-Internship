@@ -1,32 +1,22 @@
-import { create as _create, findByIdAndUpdate, findByIdAndDelete, findOne, find } from '../models/room'
+import roomModel from "../models/room.model"
 
-class RoomService {
     //Create a Room
-    async create(roomData: any){
-        return await _create(roomData)
+    export const Create = async (roomData:any) => {
+        return await roomModel.create(roomData)
     }
-
     //Edit a Room
-    async update(id: any, bookUpdate: any){
-        return await findByIdAndUpdate(id, bookUpdate, {new : true})
+    export const Update = async (id, bookUpdate) => {
+        return await roomModel.findByIdAndUpdate(id, bookUpdate, {new : true})
     }
-
     //Delete a Room
-    async delete(id: any){
-        return await findByIdAndDelete(id)
+    export const Delete = async (id) => {
+        return await roomModel.findByIdAndDelete(id)
     }
-
-
     //Get a single Room
-    async fetchOne(filter: any){
-        return await findOne(filter)
+    export const fetchOne = async (filter) => {
+        return await roomModel.findOne(filter)
     }
-
     //Get All Rooms
-    async fetch(filter: any){
-        return await find(filter)
+    export const fetchAll = async (filter) =>{
+        return await roomModel.find(filter)
     }
-}
-
-
-export default new RoomService()

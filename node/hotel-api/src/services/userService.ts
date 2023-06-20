@@ -1,32 +1,24 @@
-import userModel from '../models/user'
+import userModel from '../models/user.model'
 
-class UserService {
     //Create a User
-    async create(userData){
+    export const Create = async (userData) => {
         return await userModel.create(userData)
     }
-
     //Edit a user
-    async update(id, userUpdate){
+    export const Update = async (id, userUpdate) => {
         return await userModel.findByIdAndUpdate(id, userUpdate, {new : true})
     }
-
     //Delete a user
-    async delete(id){
+    export const Delete = async(id) => {
         return await userModel.findByIdAndDelete(id)
     }
-
-
     //Get a single user
-    async fetchOne(filter){
+    export const fetchOne = async(filter) => {
         return await userModel.findOne(filter)
     }
-
     //Get All users
-    async fetch(filter){
+    export const fetchAll = async (filter) => {
         return await userModel.find(filter)
     }
-}
 
-//export user 
-export default new UserService()
+
