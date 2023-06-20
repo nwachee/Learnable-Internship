@@ -1,7 +1,8 @@
 import { Schema, model } from "mongoose"
 import bcrypt from 'bcrypt';
+import { UserDoc } from "../interfaces/user.interface";
 
-const userSchema = new Schema({
+const userSchema = new Schema <UserDoc>({
     fullname: {
         type : String,
         required: [true, 'Must have a name'],
@@ -23,7 +24,7 @@ const userSchema = new Schema({
     }
     )
 
-    userSchema.pre('save', async function (next) {
+    userSchema.pre<UserDoc>('save', async function (next) {
         if (!this.isModified('password')) {
           next();
         }
