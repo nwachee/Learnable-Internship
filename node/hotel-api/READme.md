@@ -7,6 +7,7 @@ Used to Perform CRUD Functions on the Hotel Management System
 - Mongoose
 - dotenv
 - Joi
+- Jsonwebtoken
 - Bcrypt
 - cors
 - morgan
