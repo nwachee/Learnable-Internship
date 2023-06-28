@@ -15,7 +15,7 @@ export const login = async (req, res, next) => {
     const {email, password} = req.body
     const user = await services.fetchOne({email});
     const { _id } = user._id
-    console.log(_id)
+    // console.log(_id)
      if(!user) {
         res.status(401).json({ success: false, message: "User not Found"});
       }

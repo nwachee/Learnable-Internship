@@ -1,8 +1,8 @@
 import roomModel from "../models/room.model"
 
     //Create a Room
-    export const Create = async (roomData:any) => {
-        return await roomModel.create(roomData)
+    export const Create = async (input) => {
+        return await roomModel.create(input)
     }
     //Edit a Room
     export const Update = async (id, bookUpdate) => {
