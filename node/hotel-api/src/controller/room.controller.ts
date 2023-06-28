@@ -1,31 +1,26 @@
 import * as services from '../services/room.service'
 
     //create a Room
-    export const createRoom = async (req, res) => {
+    export const createRoom = async (req, res, next) => {
         try {
             
             const reqBody = req.body
-    
-            console.log(reqBody)
-    
              //check for existing room
             const checkRoom = await services.fetchOne({ name: reqBody.name })
-    
-            if(checkRoom) res.status(403).json({success: false, message: 'Room Already Exists'})
-    
+            if(checkRoom) {
+            res.status(403).json({success: false, message: 'Room Already Exists'})
+            } 
             //else create a room
             const newRoom = await services.Create(reqBody)
-    
-            res.status(201).json({ success: true, message: 'Room created Successfully', data: newRoom })
+            res.status(200).json({ success: true, message: 'Room created Successfully', data: newRoom })
         } catch (error) {
-            
+            next(error)
         }
     }
 
     //update a Room
     export const updateRoom = async (req, res, next) => {
         try {
-            
             const roomId = req.params.id
             const updateData = req.body
             //check if room exits before updating
@@ -33,15 +28,12 @@ import * as services from '../services/room.service'
     
             if(!checkRoom) res.status(403).json({ success: false, message: 'Room to update not found'})
     
-            //make the unique key consistent
-            if(updateData.name){
-                const checkRoomUpdate = await services.fetchOne({ name: updateData.name})
+             const checkRoomUpdate = await services.fetchOne({ name: updateData.name})
     
-                if(checkRoomUpdate._id.toString() !== checkRoomUpdate._id.toString()){
+            if(checkRoomUpdate){
                     res.status(403).json({ success: false, message: 'Room name already exists'})
     
                 }
-            }
     
             //update room
             const updatedData = await services.Update(roomId, updateData)
@@ -87,7 +79,7 @@ import * as services from '../services/room.service'
         try {
             
     const search = req.query.search
-    const fetchedBooks = await fetch(search)
+    const fetchedBooks = await services.fetchAll(search)
        
     res.status(200).json({ success: true, message: 'Rooms fetched successfully', data: fetchedBooks })
     } 

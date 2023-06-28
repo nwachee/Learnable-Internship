@@ -11,3 +11,12 @@ export const loginUser = Joi.object().keys({
     password: Joi.string().min(8).max(30).required(),
   });
 
+  export const newRoom = Joi.object().keys({
+    name: Joi.string().required(),
+    price: Joi.string().max(30).required(),
+  });
+
+  export const roomUpdate = Joi.object().keys({
+    name: Joi.string(),
+    price: Joi.string(),
+  });
